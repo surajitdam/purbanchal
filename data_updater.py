@@ -1,4 +1,8 @@
-const projectsData = [
+import codecs
+import re
+
+# --- 1. update projects.js ---
+p_js = '''const projectsData = [
     {
         id: 1, title: "Smart Metering (Uday) Pt-II", category: "Smart Metering", location: "Assam", value: "₹ 113 Cr", valueNumeric: 113, status: "Ongoing", progress: 50, client: "APDCL", loa: "APDCL/CGM(PP&D)/Smart Meter(Uday)-Pt-II/2020/25", date: "7 Year Maintenance", desc: "Scope: 1,34,000 Smart meters. Services: Installation, Commissioning, and Maintenance for 7 years."
     },
@@ -171,3 +175,51 @@ function initCharts() {
         }
     });
 }
+'''
+with codecs.open('e:/project/projects.js', 'w', 'utf-8') as f:
+    f.write(p_js)
+
+# --- 2. Update about.html ---
+with codecs.open('e:/project/about.html', 'r', 'utf-8') as f:
+    about = f.read()
+
+about = about.replace("Purbanchal Synergies Pvt. Ltd. is a leading infrastructure enterprise committed to executing large-scale, transformative projects across the region.", "Purbanchal Synergies Pvt. Ltd. (Formerly Purbanchal Enterprise), Guwahati, is an electrical services provider and business liaison company. We work with corporates, SMEs, and individuals.")
+about = about.replace("“With decades of collective leadership expertise, we specialize in delivering robust solutions that bridge critical infrastructure capability gaps.”", "“With our extensive knowledge and 20 years of experience, we have secured a strong position in the electrical market, specializing in turnkey solutions towards HT line and Substation work.”")
+about = about.replace("We are proudly multi-sector, focusing on energy, utilities, manufacturing, and bringing modern execution to challenging domains. We build the foundations for a resilient tomorrow.", "Our average turnover for the last three years is over 70 crore, consistently increasing year on year. We are the largest and oldest master stockist and channel partner for Larsen & Toubro and Landis+Gyr.")
+
+with codecs.open('e:/project/about.html', 'w', 'utf-8') as f:
+    f.write(about)
+
+# --- 3. Update services.html ---
+with codecs.open('e:/project/services.html', 'r', 'utf-8') as f:
+    srv = f.read()
+
+srv = srv.replace("Comprehensive deployment, integration, and management of Advanced Metering Infrastructure for modern grids.", "Successfully installed and commissioned over 1.5 lakh smart meters with RF modules. Currently boast a robust pipeline exceeding 2.5 lakh meters with SLA > 99%.")
+srv = srv.replace("Building robust 33/11kV substations, rural electrification lines, and enhancing grid reliability across difficult terrains.", "Executing Turnkey Solutions for high quality HT lines, Substations, DT Metering and Feeder Metering projects of APDCL.")
+srv = srv.replace("Utility-scale solar farms and life-changing rural solar micro-grids designed for longevity and high efficiency.", "Distributed over 6000 nos of Solar Home Lighting Systems. We set up solar power plants and micro-grids for numerous remote un-electrified villages.")
+
+srv = srv.replace("fa-faucet-drip", "fa-truck-fast")
+srv = srv.replace("Civil & Water Infrastructure", "Logistics & Supply")
+srv = srv.replace("From Jal Jeevan Mission pipelines to overhead tanks and fundamental civil projects empowering communities.", "Leading supplier to Axom Sarba Siksha Abhiyan Mission supplying over 1.8 Lakh furniture units, and master stockist for top electrical brands.")
+
+with codecs.open('e:/project/services.html', 'w', 'utf-8') as f:
+    f.write(srv)
+
+# --- 4. Update index.html ---
+with codecs.open('e:/project/index.html', 'r', 'utf-8') as f:
+    idx = f.read()
+
+idx = re.sub(r'data-target="23"([^>]*?)>23\+</div>\s*<p>Major Projects</p>', r'data-target="20"\1>20+</div>\n                        <p>Years Experience</p>', idx)
+idx = re.sub(r'data-target="498"([^>]*?)>498 Cr</div>\s*<p>Evaluated Project Value</p>', r'data-target="70" data-suffix=" Cr+"\1>70 Cr+</div>\n                        <p>Average Yearly Turnover</p>', idx)
+idx = re.sub(r'data-target="500000"([^>]*?)>5,00,000\+</div>\s*<p>Smart Meters Installed</p>', r'data-target="150000" data-suffix="+"\1>1,50,000+</div>\n                        <p>Smart Meters Installed</p>', idx)
+idx = re.sub(r'data-target="1000000"([^>]*?)>10,00,000\+</div>\s*<p>Non Smart Meters Delivered</p>', r'data-target="250000" data-suffix="+"\1>2,50,000+</div>\n                        <p>Smart Meter Pipeline</p>', idx)
+
+idx = idx.replace("Purbanchal Synergies Pvt. Ltd. is a <b>multi-sector</b> infrastructure", "Purbanchal Synergies Pvt. Ltd. is a <b>leading</b> infrastructure")
+idx = idx.replace("delivering <b>high-quality execution</b> across energy, utilities", "with over <b>20 years of experience</b> across energy, utilities")
+idx = idx.replace("We build the foundations for a <b>resilient\n                                                tomorrow</b>.", "We aspire to shift to the next orbit and be a front runner in implementing the <b>Smart Grid</b> vision in India.")
+idx = idx.replace("We build the foundations for a <b>resilient tomorrow</b>.", "We aspire to shift to the next orbit and be a front runner in implementing the <b>Smart Grid</b> vision in India.")
+
+with codecs.open('e:/project/index.html', 'w', 'utf-8') as f:
+    f.write(idx)
+
+print("SUCCESS")
