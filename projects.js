@@ -74,6 +74,8 @@ const projectsData = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Initial sort by value (Highest to Lowest)
+    projectsData.sort((a, b) => b.valueNumeric - a.valueNumeric);
     renderProjects(projectsData);
     initCharts();
     initScrollAnimations();
@@ -148,7 +150,8 @@ function setupFilters() {
             const matchesCat = cat === 'all' || p.category === cat;
             return matchesSearch && matchesStatus && matchesCat;
         });
-        renderProjects(filtered);
+        const sorted = filtered.sort((a, b) => b.valueNumeric - a.valueNumeric);
+        renderProjects(sorted);
     }
     searchInput.addEventListener('input', applyFilters);
     statusSelect.addEventListener('change', applyFilters);
