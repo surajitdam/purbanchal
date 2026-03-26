@@ -1,29 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who We Are | Purbanchal Synergies Pvt. Ltd.</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for standard icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(5, 20, 36, 0.7), rgba(5, 20, 36, 0.9)), url('logo/banner%20photo%20who%20we%20are%20page.jpeg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .about-hero h1 {
+            font-family: 'Poppins';
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #e2e8f0;
+        }
+
+        .about-section {
+            padding: 6rem 0;
+        }
+
+        .core-identity {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .core-identity h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .core-identity p {
+            font-size: 1.15rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .story-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 3rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .story-timeline::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(5, 20, 36, 0.1);
+            z-index: 1;
+        }
+
+        .story-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .story-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--bg-white);
+            box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .story-step:hover .story-dot {
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+        }
+
+        .story-step h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-step p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 20, 36, 0.75);
+            z-index: 1;
+            transition: 0.3s;
+        }
+
+        .value-card:hover::before {
+            background: rgba(5, 20, 36, 0.85);
+        }
+
+        .value-card i,
+        .value-card h3,
+        .value-card p {
+            position: relative;
+            z-index: 2;
+            color: #fff !important;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .value-card:hover .value-icon {
+            transform: scale(1.1);
+        }
+
+        .value-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        
+        /* MODERN FILTERABLE TEAM GRID */
+        .team-filter { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .filter-btn { padding: 0.8rem 1.5rem; border-radius: 30px; border: 1px solid var(--accent-color); background: transparent; color: var(--primary-color); font-weight: 500; cursor: pointer; transition: 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--accent-color); color: #fff; }
+        
+        .directory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem; }
+        .team-card { background: var(--bg-white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); transition: 0.4s; text-align: center; border: 1px solid rgba(0,0,0,0.05); }
+        .team-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .team-photo { width: 100%; aspect-ratio: 1; overflow: hidden; }
+        .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: 0.5s; filter: grayscale(20%); }
+        .team-card:hover .team-photo img { transform: scale(1.05); filter: grayscale(0%); }
+        .team-info { padding: 1.5rem 1rem; }
+        .team-info h3 { font-size: 1.15rem; color: var(--primary-color); margin-bottom: 0.2rem; font-weight: 600;}
+        .team-info p { font-size: 0.9rem; color: var(--accent-color); font-weight: 500; }
+        
+        .team-card.hide { display: none; }
+
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .team-img-box {
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .team-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .team-img-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .team-subtext {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            font-family: 'Poppins';
+        }
+
+        .trust-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .trust-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(5, 20, 36, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .trust-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .vision-section {
+            padding: 8rem 0;
+            text-align: center;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .vision-text {
+            font-size: 2.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            font-family: 'Poppins';
+            font-weight: 300;
+            line-height: 1.4;
+            color: #fff;
+        }
+
+        .vision-text span {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 991px) {
+            .leadership-wrapper {
+                flex-direction: column;
+            }
+
+            .leadership-left {
+                position: relative;
+                top: 0;
+                margin-bottom: 3rem;
+            }
+
+            .leader-info-box {
+                position: relative;
+                opacity: 1;
+                transform: none;
+                visibility: visible;
+                display: none;
+            }
+
+            .leader-info-box.active {
+                display: block;
+            }
+
+            .leader-photo-card {
+                height: 50vh;
+                opacity: 1;
+                transform: none;
+                filter: none;
+                margin-bottom: 2rem;
+            }
+
+            .leadership-right {
+                gap: 2rem;
+                padding-bottom: 0;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .story-timeline::before {
+                display: none;
+            }
+
+            .story-step {
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .story-dot {
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-wrap {
+                gap: 2rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
+
 <body class="animationcss">
-    <!-- Header / Navbar -->
     <header class="navbar navbar-transparent">
         <div class="com_container headerWrapper">
             <div class="logo">
                 <a href="index.html">
-                    <img src="logo/pspl%20logo.png" alt="Purbanchal Synergies Logo"
-                        style="max-height: 60px; margin-right: 15px;">
-                    Purbanchal Synergies Pvt. Ltd.
+                    <img src="logo/pspl%20logo.png" alt="Logo" style="max-height: 60px; margin-right: 15px;">
+                    Purbanchal Synergies
                 </a>
             </div>
-
             <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
-
             <div class="left-menu nav-main">
                 <nav>
                     <ul class="nav-wrap nav-links">
@@ -35,62 +382,175 @@
                     </ul>
                 </nav>
             </div>
-
             <div class="search-bar mob-search-icon">
                 <a href="contact.html" class="gradient-button header-cta">Work With Us</a>
             </div>
         </div>
     </header>
 
-    <!-- PAGE HEADER -->
-    <div class="contact-header">
-        <div class="com_container">
-            <h1>Who We Are</h1>
-            <p>Purbanchal Synergies Pvt. Ltd. (Formerly Purbanchal Enterprise), Guwahati, is an electrical services provider and business liaison company. We work with corporates, SMEs, and individuals.</p>
+    <!-- 1. HERO SECTION -->
+    <section class="about-hero">
+        <div class="com_container animate-on-scroll">
+            <h1>Driven by People.<br>Powered by Innovation.</h1>
+            <p>Building the future of smart energy and electrical infrastructure</p>
         </div>
-    </div>
+    </section>
 
-    <!-- MAIN CONTENT -->
-    <section class="section-padding oddbg">
+    <!-- 2. WHO WE ARE -->
+    <section class="about-section oddbg">
         <div class="com_container">
-            <div class="growth_wrapper" style="box-shadow: var(--hover-shadow); border-radius: 20px; overflow: hidden; background: var(--bg-white);">
-                <div class="growth-left-sec" style="flex: 0 0 40%;">
-                    <div class="leftimage animate-on-scroll" style="height: 100%; min-height: 400px;">
-                        <picture style="height: 100%; display: block;">
-                            <img src="logo/Sunil_Dubey_sir.jpeg" alt="Managing Director"
-                                style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" />
-                        </picture>
-                    </div>
+            <div class="core-identity animate-on-scroll">
+                <h2>Who We Are</h2>
+                <p>We are a premier electrical infrastructure and smart metering company dedicated to shaping resilient
+                    energy grids. With a strong, deeply rooted presence across Assam, we are the trusted execution
+                    partner for government utilities, corporate clients, and public sector enterprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CORE VALUES -->
+    <section class="about-section oddbg">
+        <div class="com_container">
+            <h2 class="com-heading" style="text-align: center; margin-bottom: 4rem;">What Defines Us</h2>
+            <div class="values-grid">
+                <div class="value-card animate-on-scroll"
+                    style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80');">
+                    <i class="fa-solid fa-award value-icon"></i>
+                    <h3>Excellence</h3>
+                    <p>Delivering the highest standard is our baseline.</p>
                 </div>
-                <div class="growth-right-sec" style="flex: 0 0 60%; padding: 5rem 4rem; display: flex; align-items: center;">
-                    <div class="textWrapper animate-on-scroll">
-                        <div class="growth-subtext">
-                            <blockquote>
-                                “With our extensive knowledge and 20 years of experience, we have secured a strong position in the electrical market, specializing in turnkey solutions towards HT line and Substation work.”
-                            </blockquote>
-                        </div>
-                        <div class="info-wrap">
-                            <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem;">
-                                Our average turnover for the last three years is over 70 crore, consistently increasing year on year. We are the largest and oldest master stockist and channel partner for Larsen & Toubro and Landis+Gyr.
-                            </p>
-                            <div class="btn-animation">
-                                <a href="projects.html" class="gradient-button">View Our Work</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="value-card animate-on-scroll"
+                    style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80');">
+                    <i class="fa-solid fa-shield-halved value-icon"></i>
+                    <h3>Reliability</h3>
+                    <p>Proven track record of timely execution.</p>
+                </div>
+                <div class="value-card animate-on-scroll"
+                    style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80');">
+                    <i class="fa-solid fa-handshake-angle value-icon"></i>
+                    <h3>Transparency</h3>
+                    <p>Absolute clarity in all engagements.</p>
+                </div>
+                <div class="value-card animate-on-scroll"
+                    style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80');">
+                    <i class="fa-solid fa-lightbulb value-icon"></i>
+                    <h3>Innovation</h3>
+                    <p>Implementing next-gen technologies.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- 5. TEAM DIRECTORY SECTION -->
+    <section class="about-section" style="padding-bottom: 0;">
+        <div class="com_container">
+            <h2 class="com-heading" style="text-align: center; margin-bottom: 2rem;">Our People</h2>
+            
+            <!-- Filters -->
+            <div class="team-filter animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="board">Board of Directors</button>
+                <button class="filter-btn" data-filter="projects">Project Management</button>
+                <button class="filter-btn" data-filter="hr-accounts">HR & Accounts</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="directory-grid animate-on-scroll" id="teamDirectory">
+                <!-- Board -->
+                <div class="team-card" data-category="board">
+                    <div class="team-photo"><img src="logo/Ravi_Sir.jpeg" alt="Ravi Pasari"></div>
+                    <div class="team-info"><h3>Ravi Pasari</h3><p>Managing Director</p></div>
+                </div>
+                <div class="team-card" data-category="board">
+                    <div class="team-photo"><img src="logo/Amit%20Kumar%20Agarwal.jpeg" alt="Amit Kumar Agarwal"></div>
+                    <div class="team-info"><h3>Amit Kumar Agarwal</h3><p>Director</p></div>
+                </div>
+                <div class="team-card" data-category="board">
+                    <div class="team-photo"><img src="logo/Aditya todi.jpeg" alt="Aditya Todi"></div>
+                    <div class="team-info"><h3>Aditya Todi</h3><p>Board Member</p></div>
+                </div>
+                
+                <!-- Projects -->
+                <div class="team-card" data-category="projects">
+                    <div class="team-photo"><img src="logo/Sunil_Dubey_sir.jpeg" alt="Sunil Dubey"></div>
+                    <div class="team-info"><h3>Sunil Dubey</h3><p>Project Head</p></div>
+                </div>
+                <div class="team-card" data-category="projects">
+                    <div class="team-photo"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80" alt="Placeholder"></div>
+                    <div class="team-info"><h3>[Name]</h3><p>Project Manager</p></div>
+                </div>
+                <div class="team-card" data-category="projects">
+                    <div class="team-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Placeholder"></div>
+                    <div class="team-info"><h3>[Name]</h3><p>Project Co-ordinator</p></div>
+                </div>
+
+                <!-- HR & Accounts -->
+                <div class="team-card" data-category="hr-accounts">
+                    <div class="team-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="Placeholder"></div>
+                    <div class="team-info"><h3>[Name]</h3><p>Head of HR</p></div>
+                </div>
+                <div class="team-card" data-category="hr-accounts">
+                    <div class="team-photo"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" alt="Placeholder"></div>
+                    <div class="team-info"><h3>[Name]</h3><p>Accounts Dept</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. OUR TEAM -->
+    <section class="about-section oddbg">
+        <div class="com_container">
+            <div class="team-grid">
+                <div class="team-img-box animate-on-scroll"><img
+                        src="https://images.unsplash.com/photo-1541888040600-4b3f17215f60?w=600&q=80" alt="Team Work">
+                </div>
+                <div class="team-img-box animate-on-scroll"><img
+                        src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&q=80" alt="Team Work">
+                </div>
+                <div class="team-img-box animate-on-scroll"><img
+                        src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80" alt="Team Work">
+                </div>
+            </div>
+            <div class="team-subtext animate-on-scroll">A team of skilled professionals delivering excellence on ground.
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TRUST INDICATORS -->
+    <section class="about-section" style="padding: 4rem 0;">
+        <div class="com_container">
+            <div class="trust-wrap animate-on-scroll">
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <div class="trust-text">20+ Years Experience</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="trust-text">ISO Certified</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-building-shield"></i></div>
+                    <div class="trust-text">Trusted by Government Utilities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. VISION -->
+    <section class="vision-section">
+        <div class="com_container animate-on-scroll">
+            <p class="vision-text">"To build <span>smarter</span>, <span>sustainable</span>, and
+                <span>future-ready</span> energy infrastructure."
+            </p>
+        </div>
+    </section>
+
     <footer>
         <div class="com_container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo" style="margin-bottom: 1rem;">
-                        <img src="logo/pspl%20logo.png" alt="PSPL Logo"
-                            style="max-height: 50px; margin-right: 10px;">
+                        <img src="logo/pspl%20logo.png" alt="PSPL Logo" style="max-height: 50px; margin-right: 10px;">
                         PSPL
                     </div>
                     <p>Delivering end-to-end solutions across energy, infrastructure, manufacturing, and technology.</p>
@@ -124,11 +584,10 @@
                         <li><i class="fa-solid fa-location-dot"
                                 style="color:var(--accent-color);margin-right:10px;"></i> B.K Enclave,
                             Panbazar,<br><span style="margin-left:25px;">Guwahati-781001, Assam</span></li>
-                        <li><i class="fa-solid fa-phone"
-                                style="color:var(--accent-color);margin-right:10px;"></i> +91-3614081063</li>
-                        <li><i class="fa-solid fa-envelope"
-                                style="color:var(--accent-color);margin-right:10px;"></i>
-                            amiprojects@purbanchalenterprise.com</li>
+                        <li><i class="fa-solid fa-phone" style="color:var(--accent-color);margin-right:10px;"></i>
+                            +91-3614081063</li>
+                        <li><i class="fa-solid fa-envelope" style="color:var(--accent-color);margin-right:10px;"></i>
+                            pspl@purbanchalenterprise.com</li>
                     </ul>
                 </div>
             </div>
@@ -138,7 +597,31 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const teamCards = document.querySelectorAll('.team-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    teamCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.classList.remove('hide');
+                        } else {
+                            card.classList.add('hide');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>

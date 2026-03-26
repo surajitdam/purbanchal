@@ -1,5 +1,8 @@
 const projectsData = [
     {
+        id: 0, title: "Smart Metering & Infrastructure", category: "Smart Metering", location: "Malda, Bhagalpur, Sahibganj", value: "₹ 280 Lakh", valueNumeric: 2.80, status: "Ongoing", progress: 60, client: "Eastern Railway", loa: "N/A", date: "Ongoing", desc: "Installation of Smart Energy Meters, Infrastructure Design, and System Integration for Eastern Railway (Indian Railways)"
+    },
+    {
         id: 1, title: "Plastic Park Substation", category: "Substation & Civil", location: "Tinsukia", value: "₹ 174.79 Lakh", valueNumeric: 1.74, status: "Completed", progress: 100, client: "APDCL", loa: "N/A", date: "20.12.2016", desc: "2×5 MVA, 33/11 kV substation + control room building"
     },
     {
