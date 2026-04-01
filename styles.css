@@ -220,7 +220,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .business-tab-home { list-style: none; }
 .businessThumb a {
-    display: block; margin-bottom: 1rem; border-radius: 12px; overflow: hidden; relative;
+    display: block; margin-bottom: 1rem; border-radius: 12px; overflow: hidden; position: relative;
     border: 2px solid transparent; transition: var(--transition);
 }
 .businessThumb a.active { border-color: var(--accent-color); }
@@ -493,7 +493,8 @@ textarea.form-control {
     .growth_wrapper { flex-direction: column; }
     .business-details-comp { flex-direction: column; }
     .sustainabilityCompWrap { flex-direction: column; height: auto;}
-    .subcard { height: 300px; }
+    .subcard { height: 300px; margin-bottom: 20px;}
+    .sustainabilityBoxWrap { opacity: 1; transform: translateY(0); flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 @media(max-width: 768px) {
     .title { font-size: 2.5rem; }
