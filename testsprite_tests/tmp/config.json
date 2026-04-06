@@ -1,0 +1,20 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "project",
+    "projectPath": "e:\\project",
+    "testIds": [
+      "TC020"
+    ],
+    "additionalInstruction": "Re-run TC020 to verify the new contact form submission handler and success message.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-d0aN8cTptJY5JeOVJQxpdYQBQVKzaa1jjEpYn8RXizBi4N4BJsAMV2XXEOOSpiV8kEtCNC5szIeQw5irO8Vii5OT7tqw6-OdV9JUhpoxyWy4lmTaFk-h-t26PAlb5RoGg4I"
+    }
+  },
+  "serverPort": 50747,
+  "proxy": "http://ba0fb006-ac72-4577-87c8-5b5935afc3b5:hRlP3TaCagW5mWBPYR8TNgaHnk3bdpxb@tun.testsprite.com:8080"
+}

@@ -70,6 +70,36 @@ const projectsData = [
     },
     {
         id: 23, title: "RDSS Electrification", category: "Power Distribution", location: "Nagaon", value: "₹ 1436.01 Lakh", valueNumeric: 14.36, status: "Ongoing", progress: 75, client: "APDCL", loa: "RDSS Scheme", date: "28.02.2026", desc: "Electrification of un-electrified households"
+    },
+    {
+        id: 24, title: "Jal Jeevan Mission (Malda)", category: "Civil & Water", location: "West Bengal", value: "₹ 520.40 Lakh", valueNumeric: 5.20, status: "Completed", progress: 100, client: "PHED", loa: "N/A", date: "15.08.2023", desc: "Piped water supply and distribution network installation under JJM"
+    },
+    {
+        id: 25, title: "DTR Metering (Kokrajhar)", category: "Smart Metering", location: "Kokrajhar", value: "₹ 345.12 Lakh", valueNumeric: 3.45, status: "Completed", progress: 100, client: "APDCL", loa: "N/A", date: "10.11.2023", desc: "Distribution Transformer Metering in Kokrajhar Circle"
+    },
+    {
+        id: 26, title: "Solar Power Generation (Bihar)", category: "Solar Power", location: "Bhagalpur", value: "₹ 890.30 Lakh", valueNumeric: 8.90, status: "Completed", progress: 100, client: "BREDA", loa: "N/A", date: "22.12.2023", desc: "Utility-scale grid-connected solar power plant installation"
+    },
+    {
+        id: 27, title: "33/11 KV Substation (Amingaon)", category: "Substation & Civil", location: "Amingaon", value: "₹ 1245.00 Lakh", valueNumeric: 12.45, status: "Completed", progress: 100, client: "APDCL", loa: "N/A", date: "05.01.2024", desc: "Construction of 33/11 KV substation with modern grid controls"
+    },
+    {
+        id: 28, title: "Urban Infrastructure (Guwahati)", category: "Civil & Water", location: "Guwahati", value: "₹ 312.45 Lakh", valueNumeric: 3.12, status: "Completed", progress: 100, client: "GMC", loa: "N/A", date: "20.02.2024", desc: "Development of urban roads and drainage infrastructure"
+    },
+    {
+        id: 29, title: "Feeder Metering (Silchar)", category: "Smart Metering", location: "Silchar", value: "₹ 278.60 Lakh", valueNumeric: 2.78, status: "Completed", progress: 100, client: "APDCL", loa: "N/A", date: "12.03.2024", desc: "Implementation of feeder metering for energy audit"
+    },
+    {
+        id: 30, title: "Power Infrastructure (Sikkim)", category: "Power Distribution", location: "Gangtok", value: "₹ 950.00 Lakh", valueNumeric: 9.50, status: "Completed", progress: 100, client: "Sikkim Power Dept", loa: "N/A", date: "30.04.2024", desc: "High altitude power distribution network expansion"
+    },
+    {
+        id: 31, title: "Industrial Wiring Project", category: "Power Distribution", location: "Tinsukia", value: "₹ 410.25 Lakh", valueNumeric: 4.10, status: "Completed", progress: 100, client: "Assam Gas Co.", loa: "N/A", date: "15.05.2024", desc: "Industrial electrification and substation wiring"
+    },
+    {
+        id: 32, title: "Substation R&M (Jorhat)", category: "Substation & Civil", location: "Jorhat", value: "₹ 620.00 Lakh", valueNumeric: 6.20, status: "Completed", progress: 100, client: "AEGCL", loa: "N/A", date: "01.06.2024", desc: "Renovation and Modernization of 33KV Substations"
+    },
+    {
+        id: 33, title: "Smart Prepaid Metering Phase-II", category: "Smart Metering", location: "Bongaigaon", value: "₹ 835.40 Lakh", valueNumeric: 8.35, status: "Completed", progress: 100, client: "APDCL", loa: "N/A", date: "25.07.2024", desc: "Phase-II implementation of Smart Prepaid Meters"
     }
 ];
 

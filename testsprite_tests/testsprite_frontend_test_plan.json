@@ -1,0 +1,819 @@
+[
+  {
+    "id": "TC001",
+    "title": "Navigate from Home to About to Projects via global header",
+    "description": "Verifies users can navigate across key pages using the sticky global navigation and land on the expected pages.",
+    "category": "Global Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the About page"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the Projects page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Projects dashboard primary content is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Navigate from Projects to Contact then back Home and confirm active state updates",
+    "description": "Verifies cross-page navigation works from Projects to Contact and back to Home and the active link state updates.",
+    "category": "Global Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the Contact page"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the Home page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Home page hero section is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Home navigation item is indicated as the active page"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Navigation to a non-existent page shows broken or 404 state",
+    "description": "Verifies attempting to navigate to a missing route results in a broken/404 state rather than expected page content.",
+    "category": "Global Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link that points to a non-existent page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a 404 or broken page state is shown"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "All global navigation links are present and usable from Services page",
+    "description": "Verifies the global navigation is available on a secondary page and supports moving to another page.",
+    "category": "Global Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /services.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the Projects page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Projects dashboard primary content is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Direct load of each primary page displays its main content",
+    "description": "Verifies each static route loads and renders its primary content area to ensure navigation destinations are valid.",
+    "category": "Global Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /about.html"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /services.html"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /contact.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Contact page inquiry form is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Rapid consecutive navigation clicks do not break page routing",
+    "description": "Verifies quickly navigating between pages does not leave the UI in a partially loaded or incorrect state.",
+    "category": "Global Navigation",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the Projects page"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the About page"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the Services page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Services page primary content is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Projects search and status filter reduce results and clearing restores all",
+    "description": "Verifies the client-side search and status filter work together and clearing filters restores the full project list.",
+    "category": "Projects Dashboard Filtering",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Fill Metering into the projects search field"
+      },
+      {
+        "type": "action",
+        "description": "Select the Ongoing status filter"
+      },
+      {
+        "type": "action",
+        "description": "Clear all applied filters and search input"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all projects are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Projects search with no matches shows empty state message",
+    "description": "Verifies a no-results query shows an empty state instead of stale project cards.",
+    "category": "Projects Dashboard Filtering",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Fill xyz-notfound into the projects search field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a no-results empty state message is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Category dropdown filter updates project cards",
+    "description": "Verifies selecting a category filter updates the visible project cards without a page reload.",
+    "category": "Projects Dashboard Filtering",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid category from the category dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the project cards update to reflect the selected category"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Search is resilient to whitespace and case variations",
+    "description": "Verifies search normalizes user input so that minor variations still return matching project cards.",
+    "category": "Projects Dashboard Filtering",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Fill metering into the projects search field"
+      },
+      {
+        "type": "action",
+        "description": "Fill   Metering   into the projects search field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify project cards matching Metering are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Open and close project details modal from the projects grid",
+    "description": "Verifies that selecting a project opens a details overlay and closing it returns to the visible project grid.",
+    "category": "Project Modal (Details Overlay)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Click a project in the projects grid"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a project details modal overlay is displayed with project details visible"
+      },
+      {
+        "type": "action",
+        "description": "Close the project details modal"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the modal overlay is closed and the projects grid is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Project modal displays core fields for the selected project",
+    "description": "Verifies that the modal overlay shows the expected fields (title, description, client, status) for a selected project.",
+    "category": "Project Modal (Details Overlay)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Click a project in the projects grid"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the modal shows a project title and description"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the modal shows a client value and a status value"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Reopen modal after closing without losing page state",
+    "description": "Verifies the user can close the modal and open another project modal without leaving the dashboard.",
+    "category": "Project Modal (Details Overlay)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Click a project in the projects grid"
+      },
+      {
+        "type": "action",
+        "description": "Close the project details modal"
+      },
+      {
+        "type": "action",
+        "description": "Click a different project in the projects grid"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a project details modal overlay is displayed for the newly selected project"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Close project modal via keyboard dismissal",
+    "description": "Verifies the modal can be dismissed using keyboard input and the underlying grid remains available.",
+    "category": "Project Modal (Details Overlay)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Click a project in the projects grid"
+      },
+      {
+        "type": "action",
+        "description": "Press Escape"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the modal overlay is closed and the projects grid is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Project modal does not open when clicking outside project cards",
+    "description": "Verifies that interacting with non-project areas does not incorrectly trigger the details overlay.",
+    "category": "Project Modal (Details Overlay)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Click an empty area of the projects dashboard outside the projects grid items"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no project details modal overlay is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Render analytics charts in the projects dashboard",
+    "description": "Verifies that the doughnut and bar charts are rendered and visible in the charts area.",
+    "category": "Data Analytics Charts",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the charts area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a doughnut chart is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a bar chart is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Show tooltip values when interacting with a chart segment",
+    "description": "Verifies that interacting with a chart segment produces a tooltip with numeric information.",
+    "category": "Data Analytics Charts",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the charts area"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer over a segment of the doughnut chart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a chart tooltip is displayed with a numeric value"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Charts remain visible after interacting with other dashboard components",
+    "description": "Verifies that charts persist after the user interacts elsewhere on the page and returns to the charts area.",
+    "category": "Data Analytics Charts",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the charts area"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the top of the projects dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Scroll back to the charts area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify both charts are still displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Charts render responsively within the viewport",
+    "description": "Verifies that the charts are not clipped and remain visible without horizontal overflow in a standard viewport.",
+    "category": "Data Analytics Charts",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the charts area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the full chart canvases are visible within the viewport without being cut off"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Submit contact form with valid inputs",
+    "description": "Verifies successful client-side submission behavior when all required fields are valid.",
+    "category": "Contact Form Validation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact.html"
+      },
+      {
+        "type": "action",
+        "description": "Fill Alice into the first name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Smith into the last name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill alice.smith@example.com into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Partnership inquiry into the subject field"
+      },
+      {
+        "type": "action",
+        "description": "Fill I would like to discuss a potential collaboration. into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a submission confirmation UI is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Block contact form submission when email format is invalid and subject is missing",
+    "description": "Verifies inline validation appears and the form is not submitted when required fields are invalid.",
+    "category": "Contact Form Validation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact.html"
+      },
+      {
+        "type": "action",
+        "description": "Fill Alice into the first name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Smith into the last name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill alice.smith@ into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Leave the subject field empty"
+      },
+      {
+        "type": "action",
+        "description": "Fill Testing invalid submission. into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify validation errors are displayed for the email and subject fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no submission confirmation UI is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Show required-field validation when submitting an empty contact form",
+    "description": "Verifies required field validation triggers when attempting to submit without inputs.",
+    "category": "Contact Form Validation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact.html"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify required-field validation errors are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no submission confirmation UI is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Clear validation errors after correcting invalid contact form inputs",
+    "description": "Verifies that validation messages resolve when the user fixes the invalid fields and resubmits.",
+    "category": "Contact Form Validation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact.html"
+      },
+      {
+        "type": "action",
+        "description": "Fill Alice into the first name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Smith into the last name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill alice@ into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "action",
+        "description": "Fill alice.smith@example.com into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill General question into the subject field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Checking that validation clears after fixing inputs. into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a submission confirmation UI is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Mobile menu opens on mobile viewport",
+    "description": "Verifies the hamburger toggle reveals the navigation links in a mobile viewport.",
+    "category": "Mobile Menu Toggle",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a mobile width (≤1024px)"
+      },
+      {
+        "type": "action",
+        "description": "Click the hamburger icon"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the navigation links are displayed in a vertical mobile layout"
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Mobile menu closes after navigating to Contact page",
+    "description": "Verifies selecting a navigation destination from the mobile menu transitions to the Contact page and closes the menu.",
+    "category": "Mobile Menu Toggle",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a mobile width (≤1024px)"
+      },
+      {
+        "type": "action",
+        "description": "Click the hamburger icon"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to go to the Contact page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the Contact page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation menu is closed"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Mobile menu can be toggled closed without navigation",
+    "description": "Verifies the hamburger toggle closes the mobile navigation after it has been opened.",
+    "category": "Mobile Menu Toggle",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a mobile width (≤1024px)"
+      },
+      {
+        "type": "action",
+        "description": "Click the hamburger icon"
+      },
+      {
+        "type": "action",
+        "description": "Click the hamburger icon again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation menu is closed"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Mobile menu remains accessible after resizing back and forth",
+    "description": "Verifies the mobile menu still opens after resizing from desktop to mobile within the same session.",
+    "category": "Mobile Menu Toggle",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a desktop width (>1024px)"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a mobile width (≤1024px)"
+      },
+      {
+        "type": "action",
+        "description": "Click the hamburger icon"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the navigation links are displayed in a vertical mobile layout"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "Mobile menu supports keyboard activation",
+    "description": "Verifies the hamburger control can be activated using the keyboard on mobile viewport.",
+    "category": "Mobile Menu Toggle",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a mobile width (≤1024px)"
+      },
+      {
+        "type": "action",
+        "description": "Focus the hamburger icon"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the navigation links are displayed in a vertical mobile layout"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "Without JavaScript, hamburger toggle does not open menu",
+    "description": "Verifies that when JavaScript is disabled, the hamburger toggle does not reveal mobile navigation links via the toggle interaction.",
+    "category": "Mobile Menu Toggle",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Disable JavaScript in the browser"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a mobile width (≤1024px)"
+      },
+      {
+        "type": "action",
+        "description": "Click the hamburger icon"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation menu does not open"
+      }
+    ]
+  }
+]

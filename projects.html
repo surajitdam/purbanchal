@@ -550,14 +550,30 @@
         }
 
         @keyframes breathing {
-            0% { opacity: 0.4; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0.4;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         @keyframes pulseHub {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.5; }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* CREDIBILITY */
@@ -640,7 +656,8 @@
                     Purbanchal Synergies
                 </a>
             </div>
-            <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+            <div class="menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu"><i
+                    class="fa-solid fa-bars"></i></div>
             <div class="left-menu nav-main">
                 <nav>
                     <ul class="nav-wrap nav-links">
@@ -675,7 +692,7 @@
     <div class="com_container">
         <div class="stats-banner glass-panel">
             <div class="stat-box">
-                <div class="stat-value">32+</div>
+                <div class="stat-value">34 +</div>
                 <div>Major Projects</div>
             </div>
             <div class="stat-box">
@@ -786,13 +803,14 @@
 
     <section class="coverage-section">
         <h2 class="pt-title" style="color:#fff;">Active <span style="color:#00f0ff;">Deployments</span></h2>
-        <p style="color: var(--proj-muted); text-align: center; max-width: 600px; margin: -1.5rem auto 2rem; font-size: 1.1rem; padding: 0 2rem;">
+        <p
+            style="color: var(--proj-muted); text-align: center; max-width: 600px; margin: -1.5rem auto 2rem; font-size: 1.1rem; padding: 0 2rem;">
             Real-time grid presence across domestic and interstate sectors.
         </p>
         <div class="coverage-container">
             <!-- Hub -->
             <div class="coverage-pill pill-hub"><i class="fa-solid fa-circle"></i> Guwahati (Headquarters)</div>
-            
+
             <!-- Assam Set -->
             <div class="coverage-pill"><i class="fa-solid fa-bolt"></i> Nalbari</div>
             <div class="coverage-pill"><i class="fa-solid fa-bolt"></i> Rangia</div>

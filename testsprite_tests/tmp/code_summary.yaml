@@ -1,0 +1,97 @@
+version: "2"
+type: frontend
+tech_stack:
+  - HTML5
+  - CSS3
+  - JavaScript (Vanilla)
+  - Swiper.js
+  - Chart.js
+routes:
+  - path: /
+    file: index.html
+    auth_required: false
+    description: Home page with hero slider and overview
+  - path: /about.html
+    file: about.html
+    auth_required: false
+    description: About Us page with team directory
+  - path: /projects.html
+    file: projects.html
+    auth_required: false
+    description: Projects dashboard with search and filters
+  - path: /services.html
+    file: services.html
+    auth_required: false
+    description: Services page detailing company expertise
+  - path: /contact.html
+    file: contact.html
+    auth_required: false
+    description: Contact page with inquiry form
+features:
+  - name: Global Navigation
+    description: Navigate between all pages via the sticky header navbar
+    files:
+      - index.html
+      - about.html
+      - projects.html
+      - services.html
+      - contact.html
+      - styles.css
+      - main.js
+    entry_route: /
+    user_interactions:
+      - Click on Home, Who We Are, Projects, Services, or Contact Us links
+      - Observe page transition to the correct URL
+    api_calls: []
+    auth_required: false
+  - name: Home Page Hero Slider
+    description: Auto-playing and interactive hero banner slider
+    files:
+      - index.html
+      - main.js
+    entry_route: /
+    user_interactions:
+      - Observe auto-advancing slides
+      - Click next/prev navigation arrows
+      - Click CTA buttons within slides
+    api_calls: []
+    auth_required: false
+  - name: Projects Dashboard filtering
+    description: Search and filter projects by title, location, category, or status
+    files:
+      - projects.html
+      - projects.js
+    entry_route: /projects.html
+    user_interactions:
+      - Type in the search input field
+      - Select a category from the dropdown
+      - Select a status from the buttons
+      - Observe project cards updating based on criteria
+    api_calls: []
+    auth_required: false
+  - name: Contact Form Validation
+    description: Client-side validation for the contact inquiry form
+    files:
+      - contact.html
+      - main.js
+    entry_route: /contact.html
+    user_interactions:
+      - Fill in name, email, subject, and message
+      - Click Send Message button
+      - Observe validation messages if fields are missing or invalid
+    api_calls: []
+    auth_required: false
+  - name: Mobile Menu Toggle
+    description: Hamburger menu for navigation on mobile devices
+    files:
+      - index.html
+      - styles.css
+      - main.js
+    entry_route: /
+    user_interactions:
+      - Resize window to mobile width
+      - Click the hamburger icon
+      - Observe navigation links appearing
+    api_calls: []
+    auth_required: false
+known_limitations: []

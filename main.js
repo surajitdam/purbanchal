@@ -218,4 +218,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // Contact Form Handling
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    
+    if (contactForm && formSuccess) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Basic animation: fade out form, fade in success
+            contactForm.style.transition = 'opacity 0.4s ease';
+            contactForm.style.opacity = '0';
+            
+            setTimeout(() => {
+                contactForm.style.display = 'none';
+                formSuccess.style.display = 'block';
+                formSuccess.style.opacity = '0';
+                formSuccess.style.transition = 'opacity 0.4s ease';
+                
+                // Trigger reflow for transition
+                formSuccess.offsetHeight;
+                formSuccess.style.opacity = '1';
+                
+                // Scroll to message
+                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 400);
+            
+            // Log for debugging
+            console.log('Form submitted successfully');
+        });
+    }
 });
