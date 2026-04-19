@@ -1,37 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Navbar Scroll
     const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
-    });
+    const syncNavbarState = () => {
+        if (!navbar) return;
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    };
+    window.addEventListener('scroll', syncNavbarState);
+    syncNavbarState();
 
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    if (menuToggle) {
+    if (menuToggle && navbar && navLinks) {
+        menuToggle.setAttribute('aria-expanded', 'false');
         menuToggle.addEventListener('click', () => {
-            if(navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'var(--primary-color)';
-                navLinks.style.padding = '1rem 0';
-                navLinks.style.textAlign = 'center';
-                
-                // Add event listeners to links to close menu
-                const links = document.querySelectorAll('.nav-links a');
-                links.forEach(link => {
-                    link.addEventListener('click', () => {
-                        if(window.innerWidth <= 1024) navLinks.style.display = 'none';
-                    });
-                });
+            const isOpen = navbar.classList.toggle('nav-open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        navLinks.addEventListener('click', (event) => {
+            if (event.target.closest('a') && window.innerWidth <= 1024) {
+                navbar.classList.remove('nav-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                navbar.classList.remove('nav-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
     }
@@ -78,25 +76,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Vertical Tabs (Core Services)
-    const tabLinks = document.querySelectorAll('.business-left-sec .businessThumb a');
+    const tabLinks = document.querySelectorAll('.business-left-sec .businessThumb button');
     const tabs = document.querySelectorAll('.business-right-sec');
-    
+
+    const setActiveTab = (link) => {
+        tabLinks.forEach((tabLink) => {
+            const isActive = tabLink === link;
+            tabLink.classList.toggle('active', isActive);
+            tabLink.setAttribute('aria-selected', String(isActive));
+            tabLink.setAttribute('tabindex', isActive ? '0' : '-1');
+        });
+
+        tabs.forEach((tab) => {
+            tab.classList.remove('active');
+            tab.setAttribute('hidden', '');
+        });
+
+        const targetId = link.getAttribute('data-business-sub-tab');
+        const targetTab = document.getElementById(targetId);
+        if (targetTab) {
+            targetTab.classList.add('active');
+            targetTab.removeAttribute('hidden');
+        }
+    };
+
     if (tabLinks.length > 0 && tabs.length > 0) {
-        tabLinks.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                // Remove active class from all links and tabs
-                tabLinks.forEach(l => l.classList.remove('active'));
-                tabs.forEach(t => t.classList.remove('active'));
-                
-                // Add active to current
-                link.classList.add('active');
-                const targetId = link.getAttribute('data-business-sub-tab');
-                const targetTab = document.getElementById(targetId);
-                if (targetTab) {
-                    targetTab.classList.add('active');
+        tabLinks.forEach((link, index) => {
+            link.addEventListener('click', () => {
+                setActiveTab(link);
+            });
+
+            link.addEventListener('keydown', (event) => {
+                if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp' && event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
+                    return;
                 }
+
+                event.preventDefault();
+                const direction = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1;
+                const nextIndex = (index + direction + tabLinks.length) % tabLinks.length;
+                tabLinks[nextIndex].focus();
+                setActiveTab(tabLinks[nextIndex]);
             });
         });
+
+        const initialActiveTab = document.querySelector('.business-left-sec .businessThumb button.active') || tabLinks[0];
+        setActiveTab(initialActiveTab);
     }
 
     // Intersection Observer for Animate on Scroll
@@ -119,15 +143,15 @@ document.addEventListener('DOMContentLoaded', () => {
             animCounters.forEach(counter => {
                 const targetText = counter.getAttribute('data-target');
                 if(!targetText) return;
-                
+
                 const target = parseInt(targetText);
                 const duration = 2000;
                 const step = target / (duration / 16);
                 let current = 0;
-                
+
                 // Extract suffix if any
-                const suffix = counter.getAttribute('data-suffix') || ''; 
-                
+                const suffix = counter.getAttribute('data-suffix') || '';
+
                 // Format numbers to Indian Numbering System
                 const formatNumber = (num) => {
                     return Math.floor(num).toLocaleString('en-IN');
@@ -139,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         counter.innerText = formatNumber(current) + suffix;
                         requestAnimationFrame(updateCounter);
                     } else {
-                        counter.innerText = formatNumber(target) + (targetText.includes('Cr') ? ' Cr' : suffix);
+                        counter.innerText = formatNumber(target) + suffix;
                     }
                 };
                 updateCounter();
@@ -222,31 +246,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact Form Handling
     const contactForm = document.getElementById('contact-form');
     const formSuccess = document.getElementById('form-success');
-    
+    const formError = document.getElementById('form-error');
+
     if (contactForm && formSuccess) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Basic animation: fade out form, fade in success
-            contactForm.style.transition = 'opacity 0.4s ease';
-            contactForm.style.opacity = '0';
-            
-            setTimeout(() => {
-                contactForm.style.display = 'none';
-                formSuccess.style.display = 'block';
-                formSuccess.style.opacity = '0';
-                formSuccess.style.transition = 'opacity 0.4s ease';
-                
-                // Trigger reflow for transition
-                formSuccess.offsetHeight;
-                formSuccess.style.opacity = '1';
-                
-                // Scroll to message
-                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 400);
-            
-            // Log for debugging
-            console.log('Form submitted successfully');
+
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.setAttribute('aria-busy', 'true');
+            }
+
+            if (formError) {
+                formError.style.display = 'none';
+            }
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        Accept: 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Form submission failed');
+                }
+
+                contactForm.style.transition = 'opacity 0.4s ease';
+                contactForm.style.opacity = '0';
+
+                setTimeout(() => {
+                    contactForm.reset();
+                    contactForm.style.display = 'none';
+                    formSuccess.style.display = 'block';
+                    formSuccess.style.opacity = '0';
+                    formSuccess.style.transition = 'opacity 0.4s ease';
+
+                    // Trigger reflow for transition
+                    formSuccess.offsetHeight;
+                    formSuccess.style.opacity = '1';
+
+                    // Scroll to message
+                    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 400);
+            } catch (error) {
+                if (formError) {
+                    formError.style.display = 'block';
+                }
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.removeAttribute('aria-busy');
+                }
+            }
         });
     }
 });

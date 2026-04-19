@@ -656,10 +656,10 @@
                     Purbanchal Synergies
                 </a>
             </div>
-            <div class="menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu"><i
-                    class="fa-solid fa-bars"></i></div>
+            <button class="menu-toggle" id="mobile-menu-toggle" type="button" aria-label="Toggle mobile menu"
+                aria-controls="site-navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
             <div class="left-menu nav-main">
-                <nav>
+                <nav id="site-navigation">
                     <ul class="nav-wrap nav-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">Who We Are</a></li>
@@ -696,11 +696,11 @@
                 <div>Major Projects</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">₹498+</div>
+                <div class="stat-value">&#8377;498+</div>
                 <div>CR Evaluated Value</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">₹70 Cr+</div>
+                <div class="stat-value">&#8377;70 Cr+</div>
                 <div>Annual Turnover</div>
             </div>
             <div class="stat-box">
@@ -894,7 +894,7 @@
                 <div class="modal-data-box">
                     <div style="font-size: 0.8rem; color: var(--proj-muted); text-transform: uppercase;">Project Value
                     </div>
-                    <div id="mValue" style="font-size: 1.1rem; font-weight: 600; color: var(--proj-accent);">₹0</div>
+                    <div id="mValue" style="font-size: 1.1rem; font-weight: 600; color: var(--proj-accent);">&#8377;0</div>
                 </div>
                 <div class="modal-data-box">
                     <div style="font-size: 0.8rem; color: var(--proj-muted); text-transform: uppercase;">LOA Details
@@ -911,8 +911,10 @@
     </div>
 
     <!-- Scripts -->
+    <script src="main.js"></script>
     <script src="projects.js"></script>
 
 </body>
 
 </html>
+

@@ -29,11 +29,11 @@
                 </a>
             </div>
 
-            <div class="menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu"><i
-                    class="fa-solid fa-bars"></i></div>
+            <button class="menu-toggle" id="mobile-menu-toggle" type="button" aria-label="Toggle mobile menu"
+                aria-controls="site-navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
 
             <div class="left-menu nav-main">
-                <nav>
+                <nav id="site-navigation">
                     <ul class="nav-wrap nav-links">
                         <li><a href="index.html" class="active-link">Home</a></li>
                         <li><a href="about.html">Who We Are</a></li>
@@ -71,7 +71,7 @@
                                             </div>
                                             <div class="pargraph">
                                                 <strong>Delivering end-to-end solutions.</strong><br><br>
-                                                Energy • Infrastructure • Manufacturing • Technology
+                                                Energy &bull; Infrastructure &bull; Manufacturing &bull; Technology
                                             </div>
                                             <div class="btns-wrap">
                                                 <a href="about.html" class="watch-btn">Learn About PSPL</a>
@@ -143,17 +143,17 @@
                     </div>
                     <div class="stat-item animate-on-scroll">
                         <i class="fa-solid fa-indian-rupee-sign"></i>
-                        <div class="stat-num" data-target="70" data-suffix=" Cr+" data-suffix=" Cr">70 Cr+</div>
+                        <div class="stat-num" data-target="70" data-suffix=" Cr+">70 Cr+</div>
                         <p>Average Yearly Turnover</p>
                     </div>
                     <div class="stat-item animate-on-scroll">
                         <i class="fa-solid fa-microchip"></i>
-                        <div class="stat-num" data-target="500000" data-suffix="+" data-suffix="+">5,00,000+</div>
+                        <div class="stat-num" data-target="500000" data-suffix="+">5,00,000+</div>
                         <p>Smart Meters Installed</p>
                     </div>
                     <div class="stat-item animate-on-scroll">
                         <i class="fa-solid fa-gauge"></i>
-                        <div class="stat-num" data-target="1000000" data-suffix="+" data-suffix="+">10,00,000+</div>
+                        <div class="stat-num" data-target="1000000" data-suffix="+">10,00,000+</div>
                         <p>Smart Meter Pipeline</p>
                     </div>
                 </div>
@@ -176,10 +176,10 @@
                                 <div class="textWrapper animate-on-scroll">
                                     <div class="growth-subtext">
                                         <blockquote>
-                                            “Purbanchal Synergies Pvt. Ltd. is a <b>leading</b> infrastructure
+                                            &ldquo;Purbanchal Synergies Pvt. Ltd. is a <b>leading</b> infrastructure
                                             company with over <b>20 years of experience</b> across energy, utilities,
                                             and industrial domains. We aspire to shift to the next orbit and be a front
-                                            runner in implementing the <b>Smart Grid</b> vision in India.”
+                                            runner in implementing the <b>Smart Grid</b> vision in India.&rdquo;
                                         </blockquote>
                                     </div>
                                     <div class="info-wrap">
@@ -206,9 +206,11 @@
                         <div class="business-details-comp active" id="verticals">
 
                             <div class="business-left-sec">
-                                <ul class="business-tab-home">
+                                <ul class="business-tab-home" role="tablist" aria-label="Core service categories">
                                     <li class="businessThumb">
-                                        <a href="javascript:;" data-business-sub-tab="tab-smart-meter" class="active">
+                                        <button type="button" data-business-sub-tab="tab-smart-meter" class="active"
+                                            id="tab-button-smart-meter" role="tab" aria-selected="true"
+                                            aria-controls="tab-smart-meter">
                                             <div class="thumb-image">
                                                 <img src="logo/smart meter bisection.jpeg" alt="Smart Metering" />
                                                 <div class="overlay-wrap">
@@ -219,10 +221,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </button>
                                     </li>
                                     <li class="businessThumb">
-                                        <a href="javascript:;" data-business-sub-tab="tab-power-dist">
+                                        <button type="button" data-business-sub-tab="tab-power-dist"
+                                            id="tab-button-power-dist" role="tab" aria-selected="false"
+                                            aria-controls="tab-power-dist">
                                             <div class="thumb-image">
                                                 <img src="logo/PowerGrid.jpg" alt="Power Distribution" />
                                                 <div class="overlay-wrap">
@@ -233,10 +237,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </button>
                                     </li>
                                     <li class="businessThumb">
-                                        <a href="javascript:;" data-business-sub-tab="tab-solar-epc">
+                                        <button type="button" data-business-sub-tab="tab-solar-epc"
+                                            id="tab-button-solar-epc" role="tab" aria-selected="false"
+                                            aria-controls="tab-solar-epc">
                                             <div class="thumb-image">
                                                 <img src="logo/Solar _panel.jpg" alt="Solar EPC" />
                                                 <div class="overlay-wrap">
@@ -247,10 +253,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </button>
                                     </li>
                                     <li class="businessThumb">
-                                        <a href="javascript:;" data-business-sub-tab="tab-civil-water">
+                                        <button type="button" data-business-sub-tab="tab-civil-water"
+                                            id="tab-button-civil-water" role="tab" aria-selected="false"
+                                            aria-controls="tab-civil-water">
                                             <div class="thumb-image">
                                                 <img src="logo/jjm.jpeg" alt="Civil Water" />
                                                 <div class="overlay-wrap">
@@ -261,13 +269,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
 
                             <!-- Tab Contents -->
-                            <div class="business-right-sec active" id="tab-smart-meter">
+                            <div class="business-right-sec active" id="tab-smart-meter" role="tabpanel"
+                                aria-labelledby="tab-button-smart-meter">
                                 <div class="business-detail-content">
                                     <div class="big-thumb-image animate-on-scroll">
                                         <img src="logo/smart_meter_installation.jpeg" alt="Smart Meter Installation" />
@@ -288,7 +297,8 @@
                                 </div>
                             </div>
 
-                            <div class="business-right-sec" id="tab-power-dist">
+                            <div class="business-right-sec" id="tab-power-dist" role="tabpanel"
+                                aria-labelledby="tab-button-power-dist" hidden>
                                 <div class="business-detail-content">
                                     <div class="big-thumb-image">
                                         <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&q=80"
@@ -310,7 +320,8 @@
                                 </div>
                             </div>
 
-                            <div class="business-right-sec" id="tab-solar-epc">
+                            <div class="business-right-sec" id="tab-solar-epc" role="tabpanel"
+                                aria-labelledby="tab-button-solar-epc" hidden>
                                 <div class="business-detail-content">
                                     <div class="big-thumb-image">
                                         <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1200&q=80"
@@ -332,7 +343,8 @@
                                 </div>
                             </div>
 
-                            <div class="business-right-sec" id="tab-civil-water">
+                            <div class="business-right-sec" id="tab-civil-water" role="tabpanel"
+                                aria-labelledby="tab-button-civil-water" hidden>
                                 <div class="business-detail-content">
                                     <div class="big-thumb-image">
                                         <img src="logo/jjm_big_photo.jpeg" alt="" />
@@ -603,3 +615,4 @@
 </body>
 
 </html>
+
