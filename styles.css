@@ -456,6 +456,7 @@ footer { background: var(--primary-color); color: #fff; padding: 5rem 0 2rem; po
     box-shadow: 0 10px 40px rgba(0,0,0,0.04);
     border: 1px solid rgba(0,0,0,0.05);
 }
+.contact-form-card h2,
 .contact-form-card h3 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
